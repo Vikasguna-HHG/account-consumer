@@ -1,0 +1,21 @@
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+        <tr>
+            <th>Account Number SAP</th>
+            <th>Account Name SAP</th>
+            <th>Account Definition</th>
+        </tr>
+        <tr>
+            <th><input type="text" placeholder="Account Number SAP" name="search-id" /></th>
+            <th><input type="text" placeholder="Account Name SAP" name="search-first-name" /></th>
+            <th><input type="text" placeholder="Account Definition" name="search-last-name" /></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of getAll">
+            <td>{{ item.sapaccountnumber }}</td>
+            <td>{{ item.sapaccountname }}</td>
+            <td>{{ item.accountdefinition }}</td>
+        </tr>
+    </tbody>
+</table>
