@@ -23,6 +23,9 @@ export class Demo2Component implements OnInit, AfterViewInit {
   dtOptions: DataTables.Settings = {};
   getAll!: getAll[];
   dtTrigger: Subject<any> = new Subject();
+  searchText1 = ''
+  searchText2 = ''
+  searchText3 = ''
 
   @ViewChild(DataTableDirective)
   datatableElement!: DataTableDirective;
@@ -43,6 +46,7 @@ export class Demo2Component implements OnInit, AfterViewInit {
     // });
 
     setTimeout(() => {
+      debugger
       this.getAll = this.Apis.GetDataJson().result;
       this.dtTrigger.next(this.getAll);
     });

@@ -5,19 +5,17 @@
             <th>Account Name SAP</th>
             <th>Account Definition</th>
         </tr>
-    </thead>
-    <thead>
         <tr>
-            <th><input type="text" placeholder="Account Number SAP" name="search-id" /></th>
-            <th><input type="text" placeholder="Account Name SAP" name="search-first-name" /></th>
-            <th><input type="text" placeholder="Account Definition" name="search-last-name" /></th>
+            <th><input type="search" placeholder="Account Number SAP" name="NumberSAP" [(ngModel)]="searchText1" /></th>
+            <th><input type="search" placeholder="Account Name SAP" name="NameSAP" [(ngModel)]="searchText2" /></th>
+            <th><input type="search" placeholder="Account Definition" name="Definition" [(ngModel)]="searchText3" /></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of getAll">
-            <td>{{ item.sapaccountnumber }}</td>
-            <td>{{ item.sapaccountname }}</td>
-            <td>{{ item.accountdefinition }}</td>
-        </tr>
+            <tr *ngFor="let item of getAll" >
+                <td [innerHtml]="item.sapaccountnumber | highlighter:searchText1:'partial'">{{ item.sapaccountnumber }}</td>
+                <td [innerHtml]="item.sapaccountname | highlighter:searchText2:'partial'">{{ item.sapaccountname }}</td>
+                <td [innerHtml]="item.accountdefinition | highlighter:searchText3:'partial'">{{ item.accountdefinition }}</td>
+            </tr>
     </tbody>
 </table>
