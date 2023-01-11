@@ -1,23 +1,21 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @Pipe({
-  name: 'highlighter'
+  name: 'highlight'
 })
 export class HighlighterPipe implements PipeTransform {
-
-  transform(value: any, args: any, type: string): unknown {
-    if (!args) return value;
-    if (type === 'full') {
-      const re = new RegExp("\\b(" + args + "\\b)", 'igm');
-      value = value.replace(re, '<span class="highlighted-text">$1</span>');
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(text: string, search: string): any {
+    if (!search) {
+      return text;
     }
-    else {
-      const re = new RegExp(args, 'igm');
-      value = value.replace(re, '<span class="highlighted-text">$&</span>');
+    const searchRegEx = new RegExp(search, 'gi');
+    const match = text.match(searchRegEx);
+    if (!match) {
+      return text;
     }
-
-    return value;
+    return this.sanitizer.bypassSecurityTrustHtml(
+      text.replace(searchRegEx, match => `<mark>${match}</mark>`)
+    );
   }
-
-
 }

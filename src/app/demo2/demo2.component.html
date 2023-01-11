@@ -12,10 +12,10 @@
         </tr>
     </thead>
     <tbody>
-            <tr *ngFor="let item of getAll" >
-                <td [innerHtml]="item.sapaccountnumber | highlighter:searchText1:'partial'">{{ item.sapaccountnumber }}</td>
-                <td [innerHtml]="item.sapaccountname | highlighter:searchText2:'partial'">{{ item.sapaccountname }}</td>
-                <td [innerHtml]="item.accountdefinition | highlighter:searchText3:'partial'">{{ item.accountdefinition }}</td>
-            </tr>
+        <tr *ngFor="let item of getAll">
+            <td [innerHTML]="item.sapaccountnumber | highlight:searchText1">{{ item.sapaccountnumber }}</td>
+            <td [innerHtml]="item.sapaccountname | highlight:searchText2">{{ item.sapaccountname }}</td>
+            <td [innerHtml]="item.accountdefinition | highlight:searchText3">{{ item.accountdefinition }}</td>
+        </tr>
     </tbody>
 </table>
