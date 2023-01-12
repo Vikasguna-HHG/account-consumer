@@ -1,17 +1,21 @@
 <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
     <thead>
         <tr>
-            <th>Account Number SAP</th>
+            <th class="sorting">Account Number SAP</th>
             <th>Account Name SAP</th>
             <th>Account Definition</th>
         </tr>
+
+    </thead>
+    <tfoot style="display: contents;">
         <tr>
-            <th><input type="search" placeholder="Account Number SAP" name="NumberSAP" [(ngModel)]="searchText1" /></th>
+            <th class="filter"><input type="search" placeholder="Account Number SAP" name="NumberSAP" [(ngModel)]="searchText1" /></th>
             <th><input type="search" placeholder="Account Name SAP" name="NameSAP" [(ngModel)]="searchText2" /></th>
             <th><input type="search" placeholder="Account Definition" name="Definition" [(ngModel)]="searchText3" /></th>
         </tr>
-    </thead>
+    </tfoot>
     <tbody>
+
         <tr *ngFor="let item of getAll">
             <td [innerHTML]="item.sapaccountnumber | highlight:searchText1">{{ item.sapaccountnumber }}</td>
             <td [innerHtml]="item.sapaccountname | highlight:searchText2">{{ item.sapaccountname }}</td>

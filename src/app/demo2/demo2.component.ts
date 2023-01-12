@@ -60,7 +60,7 @@ export class Demo2Component implements OnInit, AfterViewInit {
       this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
         dtInstance.columns().every(function () {
           const that = this;
-          $('input', this.header()).on('keyup change', function (e) {
+          $('input', this.footer()).on('keyup change', function (e) {
             if (that.search() !== (this as HTMLInputElement).value) {
               that.search((this as HTMLInputElement).value).draw();
             }

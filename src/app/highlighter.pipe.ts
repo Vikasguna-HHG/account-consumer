@@ -15,7 +15,7 @@ export class HighlighterPipe implements PipeTransform {
       return text;
     }
     return this.sanitizer.bypassSecurityTrustHtml(
-      text.replace(searchRegEx, match => `<mark>${match}</mark>`)
+      text.replace(searchRegEx, match => `<mark style="background-color: red;">${match}</mark>`)
     );
   }
 }
